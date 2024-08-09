@@ -11,7 +11,7 @@ jobs:
       contents: 'read'
     steps:
       - name: Condition check
-        if: ${{ ! github.repository == 'octocat/octo' }}
+        if: ${{ !github.repository == 'octocat/octo' }}
         run: echo "Correct Repo"
       - name: Default
         run: echo "The repo name is ${{ github.repository }}"
