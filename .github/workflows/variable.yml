@@ -1,0 +1,29 @@
+name: 'Variables Check'
+
+on: [push]
+env:
+  my_env: "Workflow"
+jobs:
+  variable1-job:
+    env:
+      my_env: "Job"
+    runs-on: macos-latest
+    permissions:
+      contents: 'read'
+    steps:
+      - name: Contains Check
+        env: 
+          my_env: "Step"
+        if: contains('Hello','H')
+        run: echo "String contains substring. My variable is ${my_env}"
+      - name: starts with check
+        if: startsWith('Hello','H')
+        run: echo "String startswith substring. My variable is ${my_env}"
+  variable2-job:
+    needs: variable1-job
+    runs-on: macos-latest
+    permissions:
+      contents: 'read'
+    steps:
+      - name: Print Check
+        run: echo "My variable is ${my_env}"
