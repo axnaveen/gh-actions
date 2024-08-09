@@ -3,7 +3,7 @@ name: 'Repository dispatch example'
 on:
   repository_dispatch:
     types:
-      - webhook
+      - naveen_webhook
 
 jobs:
   test_schedule:
