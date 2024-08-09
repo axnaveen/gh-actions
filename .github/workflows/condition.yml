@@ -1,0 +1,18 @@
+name: 'Condition Check'
+
+on:
+  push: 
+    branches-ignore: ["test"]
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+    steps:
+      - name: Condition check
+        if: ${{ github.repository == 'octocat/octo' }}
+        run: echo "Correct Repo"
+      - name: Default
+        run: echo "The repo name is ${{ github.repository }}"
+
