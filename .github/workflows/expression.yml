@@ -1,0 +1,16 @@
+name: 'Expression Check'
+
+on: [push]
+
+jobs:
+  expression-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+    steps:
+      - name: Contains Check
+        if: contains('Hello','H')
+        run: echo "String contains substring"
+      - name: starts with check
+        if: startsWith('Hello','H')
+        run: echo "String startswith substring"
